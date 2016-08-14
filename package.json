@@ -1,0 +1,18 @@
+{
+  "name": "hyperwakatime",
+  "version": "1.0.0",
+  "description": "Hypperterm + Wakatime plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hyperterm",
+    "wakatime"
+  ],
+  "author": "Fernando Montoya",
+  "license": "MIT",
+  "dependencies": {
+    "xhr": "2.2.2"
+  }
+}
