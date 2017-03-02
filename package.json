@@ -1,6 +1,6 @@
 {
   "name": "hyperwakatime",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Hypperterm + Wakatime plugin",
   "main": "index.js",
   "scripts": {
@@ -13,6 +13,6 @@
   "author": "Fernando Montoya",
   "license": "MIT",
   "dependencies": {
-    "xhr": "2.2.2"
+    "lodash.debounce": "4.0.8"
   }
 }

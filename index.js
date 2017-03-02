@@ -1,30 +1,21 @@
-let xhr = require('xhr');
+const debounce = require('lodash.debounce')
+const exec = require('child_process').exec
+const command = '/usr/local/bin/wakatime --entity Terminal --entitytype app --plugin "hyper-wakatime/0.0.1" --project "<<LAST_PROJECT>>"'
 
-let API_URL = 'https://wakatime.com/api/v1/heartbeats';
+function sendHearbeat() {
+  exec(command, function cb(error, stdout, stderr) {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  });
+}
+
+const debounceBeat = debounce(sendHearbeat, 60000)
 
 exports.middleware = (state) => (next) => (action) => {
-  let apiKey = config.getConfig().wakatimeApiKey;
-
-  const options = {
-    time: Date.now()/1000,
-    type: 'app',
-    entity: 'HyperTerm',
-    plugin: 'hyperwakatime'
-  };
-
-  if(action.type === 'SESSION_ADD_DATA') {
-    xhr({
-      url: API_URL,
-      method: 'POST',
-      body: JSON.stringify(options),
-      headers: {
-        'Authorization': `Basic ${btoa(apiKey)}`
-      }
-    }, (err, response) => {
-      if(response.statusCode !== 201) {
-        console.error(response);
-      }
-    })
-  }
-  next(action);
+  debounceBeat()
+  next(action)
 }
