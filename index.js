@@ -1,6 +1,6 @@
 const debounce = require('lodash.debounce')
 const exec = require('child_process').exec
-const command = '/usr/local/bin/wakatime --entity Terminal --entitytype app --plugin "hyper-wakatime/0.0.1" --project "<<LAST_PROJECT>>"'
+const command = '/usr/local/bin/wakatime --entity Terminal --entity-type app --plugin "hyper-wakatime/0.0.2" --project "<<LAST_PROJECT>>"'
 
 function sendHearbeat() {
   exec(command, function cb(error, stdout, stderr) {
