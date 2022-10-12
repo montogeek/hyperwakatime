@@ -1,6 +1,6 @@
 {
   "name": "hyperwakatime",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hyperterm + Wakatime plugin",
   "main": "index.js",
   "scripts": {
